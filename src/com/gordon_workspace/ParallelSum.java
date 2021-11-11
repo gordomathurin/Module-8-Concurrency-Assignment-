@@ -13,9 +13,38 @@ public class ParallelSum extends Thread {
         this.highestNum = Math.min(highestNum, randomNumArray.length);
 
     }
+    
 
-    public int getPartialSum() {
+    public int[] getRandomNumArray() {
+        return randomNumArray;
+    }
+
+    public void setRandomNumArray(int[] randomNumArray) {
+        this.randomNumArray = randomNumArray;
+    }
+
+    public int getLowestNum() {
+        return lowestNum;
+    }
+
+    public void setLowestNum(int lowestNum) {
+        this.lowestNum = lowestNum;
+    }
+
+    public int getHighestNum() {
+        return highestNum;
+    }
+
+    public void setHighestNum(int highestNum) {
+        this.highestNum = highestNum;
+    }
+
+    public int getPartial() {
         return partial;
+    }
+
+    public void setPartial(int partial) {
+        this.partial = partial;
     }
 
     public void run() {
@@ -56,7 +85,7 @@ public class ParallelSum extends Thread {
             error.printStackTrace();
         }
 
-        return Arrays.stream(sums).mapToInt(ParallelSum::getPartialSum).sum();
+        return Arrays.stream(sums).mapToInt(ParallelSum::getPartial).sum();
 
     }
 }
