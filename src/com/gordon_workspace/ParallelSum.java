@@ -52,11 +52,11 @@ public class ParallelSum extends Thread {
                 sum.join();
             }
 
-        } catch (InterruptedException e) {
+        } catch (InterruptedException error) {
+            error.printStackTrace();
         }
 
-        int total = Arrays.stream(sums).mapToInt(ParallelSum::getPartialSum).sum();
-        return total;
+        return Arrays.stream(sums).mapToInt(ParallelSum::getPartialSum).sum();
 
     }
 }
